@@ -4,7 +4,6 @@ Trang giới thiệu (landing page) tĩnh cho ứng dụng TarotLight: trình b�
 
 > Mọi nội dung hiển thị đều là dữ liệu mẫu để minh họa giao diện. Trang không có backend, không thu thập thông tin và không có biểu mẫu gửi dữ liệu.
 
-**Demo trực tuyến:** https://tarotlight-app.genalpha.dev
 **Giấy phép:** [MIT](LICENSE) © M-Software
 
 ## Cách xem
