@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TarotLight — Bản demo giao diện</title>
+<meta name="description" content="Trang giới thiệu bản demo giao diện ứng dụng TarotLight: trang chủ, hồ sơ advisor, chat, ví credits, Tarot Diario.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--night:#120E24;--smoke:#2A1E4F;--gold:#C9A227;--gold2:#E8C874;--cream:#F5EFE6;--muted:#A89FC4;--card:#1E1440}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--night);color:var(--cream);font-family:Inter,system-ui,sans-serif}
+  .wrap{max-width:1060px;margin:0 auto;padding:32px 20px 56px}
+  header{display:flex;align-items:center;gap:12px}
+  .logo{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-size:22px}
+  .brand{font-family:"Cormorant Garamond",serif;font-size:30px;letter-spacing:.5px}
+  .hero{text-align:center;padding:44px 0 8px}
+  .hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(40px,6vw,64px);line-height:1.05;margin:8px 0 12px}
+  .hero h1 span{color:var(--gold)}
+  .hero p{color:var(--muted);max-width:640px;margin:0 auto;line-height:1.7}
+  .note{display:inline-block;margin-top:18px;border:1px solid var(--gold);color:var(--gold2);border-radius:999px;padding:8px 16px;font-size:13px}
+  h2.sec{font-family:"Cormorant Garamond",serif;font-size:32px;text-align:center;margin:56px 0 6px}
+  p.sub{text-align:center;color:var(--muted);margin:0 0 28px;line-height:1.6}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+  .phone{background:#0B0820;border:1px solid #3A2E63;border-radius:30px;padding:12px 12px 16px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+  .screen{background:var(--night);border-radius:20px;padding:14px;min-height:330px;border:1px solid #2A1E4F}
+  .screen h3{font-family:"Cormorant Garamond",serif;font-size:21px;margin:2px 0 10px}
+  .cap{text-align:center;color:var(--muted);font-size:13px;margin-top:12px}
+  .pill{display:inline-block;font-size:11px;border-radius:999px;padding:3px 9px;background:#122B1A;color:#34C759;border:1px solid #1F5C33}
+  .pill.gold{background:#2E2508;color:var(--gold2);border-color:#6B5A1E}
+  .search{background:var(--card);border-radius:12px;padding:9px 11px;color:var(--muted);font-size:13px}
+  .tabs{display:flex;gap:6px;margin:12px 0}
+  .tabs span{font-size:11px;padding:5px 10px;border-radius:999px;background:var(--card)}
+  .tabs span.on{background:var(--gold);color:#241A12;font-weight:600}
+  .card{background:var(--card);border-radius:14px;padding:11px;margin-top:10px;display:flex;gap:10px;align-items:center}
+  .ava{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#3A2E63,#C9A227);display:grid;place-items:center;font-size:20px;flex:none}
+  .card b{display:block;font-size:14px}
+  .card small{color:var(--muted);font-size:12px}
+  .price{margin-left:auto;color:var(--gold2);font-size:12px;font-weight:600;text-align:right}
+  .stat{display:flex;gap:8px;margin-top:12px}
+  .stat div{flex:1;background:var(--card);border-radius:12px;padding:9px 4px;text-align:center}
+  .stat b{display:block;font-size:16px}
+  .stat small{color:var(--muted);font-size:11px}
+  .btn{display:block;text-align:center;background:var(--gold);color:#241A12;font-weight:700;border-radius:12px;padding:10px;margin-top:12px;font-size:14px}
+  .bubble{max-width:85%;border-radius:14px;padding:9px 11px;font-size:13px;line-height:1.5;margin-top:9px}
+  .bubble.me{margin-left:auto;background:var(--smoke)}
+  .bubble.them{background:var(--card)}
+  .bal{font-family:"Cormorant Garamond",serif;font-size:34px;color:var(--gold2)}
+  .dots{display:flex;gap:6px;margin-top:10px}
+  .dots i{width:26px;height:26px;border-radius:50%;border:1.5px solid #3A2E63;display:grid;place-items:center;font-style:normal;font-size:12px;color:var(--muted)}
+  .dots i.done{background:var(--gold);color:#241A12;border-color:var(--gold);font-weight:700}
+  .tarotcard{background:linear-gradient(180deg,#2A1E4F,#1E1440);border:1px solid var(--gold);border-radius:16px;padding:22px 12px;text-align:center;margin-top:12px}
+  .tarotcard .star{font-size:44px;color:var(--gold2)}
+  .tarotcard b{font-family:"Cormorant Garamond",serif;font-size:22px;display:block;margin-top:6px}
+  .tarotcard small{color:var(--muted)}
+  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px}
+  .feat{background:var(--card);border:1px solid #3A2E63;border-radius:16px;padding:18px}
+  .feat b{font-size:15px}
+  .feat p{color:var(--muted);font-size:13.5px;line-height:1.65;margin:8px 0 0}
+  footer{margin-top:56px;border-top:1px solid #3A2E63;padding-top:20px;text-align:center;color:var(--muted);font-size:13px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">✦</div>
+    <div class="brand">TarotLight</div>
+  </header>
+
+  <section class="hero">
+    <div>✦ &nbsp;TRẢI BÀI · TƯ VẤN · MỖI NGÀY&nbsp; ✦</div>
+    <h1>Ánh sáng cho những<br><span>câu hỏi của bạn</span></h1>
+    <p>Trang giới thiệu bản demo giao diện ứng dụng TarotLight: gặp gỡ các advisor, trải bài Tarot Diario, hỏi đáp cộng đồng và quản lý ví credits — tất cả trong một không gian tím đêm sang trọng.</p>
+    <div><span class="note">Bản demo giao diện — mọi nội dung hiển thị đều là dữ liệu mẫu</span></div>
+  </section>
+
+  <h2 class="sec">Một vài màn hình chính</h2>
+  <p class="sub">Các khung hình dưới đây mô phỏng giao diện ứng dụng theo đúng bản thiết kế (chưa phải ảnh chụp từ thiết bị thật).</p>
+
+  <div class="grid">
+    <div class="phone"><div class="screen">
+      <div class="search">⌕ &nbsp;Tìm advisor, chủ đề…</div>
+      <div class="tabs"><span class="on">Tất cả</span><span>Best Value</span><span>Top</span></div>
+      <h3>Trang chủ</h3>
+      <div class="card"><div class="ava">✦</div><div><b>TarotLight</b><small>★ 5.0 · 1.2K readings</small></div><div class="price">● LIVE<br>15 cr/phút</div></div>
+      <div class="card"><div class="ava">☾</div><div><b>Seraphina</b><small>★ 4.9 · 860 readings</small></div><div class="price">12 cr/phút</div></div>
+      <div class="card"><div class="ava">♄</div><div><b>Orion</b><small>★ 4.8 · 640 readings</small></div><div class="price">10 cr/phút</div></div>
+    </div><div class="cap">Trang chủ — tìm kiếm, lọc, advisor đang online</div></div>
+
+    <div class="phone"><div class="screen">
+      <div style="text-align:center"><span class="pill">● Đang online</span></div>
+      <div style="text-align:center;font-size:52px;margin:10px 0 2px">✦</div>
+      <h3 style="text-align:center">TarotLight</h3>
+      <p style="text-align:center;color:var(--muted);font-size:12.5px;margin:0">Tarot · Tình yêu · Phát triển bản thân</p>
+      <div class="stat"><div><b>5.0</b><small>Đánh giá</small></div><div><b>1.2K</b><small>Readings</small></div><div><b>12 năm</b><small>Kinh nghiệm</small></div></div>
+      <div class="btn">Book a Session</div>
+      <div class="btn" style="background:var(--card);color:var(--cream);border:1px solid #3A2E63">Follow</div>
+    </div><div class="cap">Hồ sơ advisor — thống kê, đánh giá, theo dõi</div></div>
+
+    <div class="phone"><div class="screen">
+      <h3>Trò chuyện</h3>
+      <div class="bubble them">Chào bạn, hôm nay bạn muốn hỏi về điều gì? ✦</div>
+      <div class="bubble me">Mình muốn hỏi về chuyện tình cảm trong tháng này.</div>
+      <div class="bubble them">Lá bài hôm nay của bạn là The Star — một khởi đầu đầy hy vọng đang tới.</div>
+      <div class="search" style="margin-top:12px">Nhắn tin… &nbsp; ➤</div>
+    </div><div class="cap">Chat 1-1 — tin nhắn, tin hệ thống, hỗ trợ kèm FAQ</div></div>
+
+    <div class="phone"><div class="screen">
+      <h3>Ví credits</h3>
+      <div>Số dư của bạn</div>
+      <div class="bal">240 credits</div>
+      <div class="card"><div><b>Gói 50</b><small>Google Play · giao diện mẫu</small></div><div class="price">—</div></div>
+      <div class="card"><div><b>Gói 120 · Best Value</b><small>Apple IAP · giao diện mẫu</small></div><div class="price">★</div></div>
+      <div class="card"><div><b>Coupon FREEREAD</b><small>Câu hỏi miễn phí · đã mở khóa</small></div><div class="price">Dùng ngay →</div></div>
+    </div><div class="cap">Ví credits — gói nạp, lịch sử, ưu đãi người dùng mới</div></div>
+
+    <div class="phone"><div class="screen">
+      <h3>Tarot Diario</h3>
+      <div class="tabs"><span class="on">Today</span><span>This Week</span><span>This Month</span></div>
+      <div class="tarotcard"><div class="star">★</div><b>The Star</b><small>Lá bài của ngày hôm nay</small></div>
+      <div style="margin-top:14px;font-size:13px;color:var(--muted)">Điểm danh 7 ngày</div>
+      <div class="dots"><i class="done">✓</i><i class="done">✓</i><i class="done">✓</i><i>4</i><i>5</i><i>6</i><i>7</i></div>
+      <div class="btn">Read Full Message</div>
+    </div><div class="cap">Tarot Diario — lá bài ngày, điểm danh, coupon</div></div>
+  </div>
+
+  <h2 class="sec">Trong bản demo có gì?</h2>
+  <div class="feats">
+    <div class="feat"><b>🔮 Trung tâm hỏi đáp</b><p>Muro de preguntas của cộng đồng, tung xúc xắc Dados, Tarot giải đáp và vòng tròn Carta astral — tất cả đều là nội dung mẫu tương tác tại chỗ.</p></div>
+    <div class="feat"><b>📞 Gọi thoại &amp; Quick Session</b><p>Gọi tính theo phút, phiên nhanh 10 phút và lịch sử cuộc gọi — hiển thị ở mức giao diện.</p></div>
+    <div class="feat"><b>👤 Tài khoản đầy đủ</b><p>Following, lịch sử gọi/chat/giao dịch, cài đặt ngôn ngữ và thông báo, điều khoản và xóa tài khoản có xác nhận hai bước.</p></div>
+  </div>
+
+  <footer>
+    TarotLight — trang giới thiệu bản demo giao diện.<br>
+    Mọi advisor, bài tarot, số dư và ưu đãi trên trang này đều là dữ liệu mẫu, không phát sinh buổi tư vấn hay giao dịch thật.
+  </footer>
+</div>
+</body>
+</html>
