@@ -25,6 +25,7 @@
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
   .phone{background:#0B0820;border:1px solid #3A2E63;border-radius:30px;padding:12px 12px 16px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
   .screen{background:var(--night);border-radius:20px;padding:14px;min-height:330px;border:1px solid #2A1E4F}
+  .screen.real{padding:0;overflow:hidden}.screen.real img{width:100%;display:block;border-radius:20px}
   .screen h3{font-family:"Cormorant Garamond",serif;font-size:21px;margin:2px 0 10px}
   .cap{text-align:center;color:var(--muted);font-size:13px;margin-top:12px}
   .pill{display:inline-block;font-size:11px;border-radius:999px;padding:3px 9px;background:#122B1A;color:#34C759;border:1px solid #1F5C33}
@@ -76,7 +77,7 @@
   </section>
 
   <h2 class="sec">Một vài màn hình chính</h2>
-  <p class="sub">Các khung hình dưới đây mô phỏng giao diện ứng dụng theo đúng bản thiết kế (chưa phải ảnh chụp từ thiết bị thật).</p>
+  <p class="sub">Khung Chat 1-1 và Ví credits dưới đây là ảnh chụp thật từ ứng dụng (bản Sprint 4); ba khung còn lại vẫn mô phỏng theo thiết kế, chờ ảnh chụp lại từ bản mới nhất.</p>
 
   <div class="grid">
     <div class="phone"><div class="screen">
@@ -98,22 +99,13 @@
       <div class="btn" style="background:var(--card);color:var(--cream);border:1px solid #3A2E63">Follow</div>
     </div><div class="cap">Hồ sơ advisor — thống kê, đánh giá, theo dõi</div></div>
 
-    <div class="phone"><div class="screen">
-      <h3>Trò chuyện</h3>
-      <div class="bubble them">Chào bạn, hôm nay bạn muốn hỏi về điều gì? ✦</div>
-      <div class="bubble me">Mình muốn hỏi về chuyện tình cảm trong tháng này.</div>
-      <div class="bubble them">Lá bài hôm nay của bạn là The Star — một khởi đầu đầy hy vọng đang tới.</div>
-      <div class="search" style="margin-top:12px">Nhắn tin… &nbsp; ➤</div>
-    </div><div class="cap">Chat 1-1 — tin nhắn, tin hệ thống, hỗ trợ kèm FAQ</div></div>
+    <div class="phone"><div class="screen real">
+      <img src="images/chat-1-1.png" alt="Ảnh chụp thật màn hình Chat 1-1 của ứng dụng TarotLight: hội thoại với advisor Seraphina">
+    </div><div class="cap">Chat 1-1 — ảnh chụp thật: hội thoại với advisor, ô nhập tin nhắn</div></div>
 
-    <div class="phone"><div class="screen">
-      <h3>Ví credits</h3>
-      <div>Số dư của bạn</div>
-      <div class="bal">240 credits</div>
-      <div class="card"><div><b>Gói 50</b><small>Google Play · giao diện mẫu</small></div><div class="price">—</div></div>
-      <div class="card"><div><b>Gói 120 · Best Value</b><small>Apple IAP · giao diện mẫu</small></div><div class="price">★</div></div>
-      <div class="card"><div><b>Coupon FREEREAD</b><small>Câu hỏi miễn phí · đã mở khóa</small></div><div class="price">Dùng ngay →</div></div>
-    </div><div class="cap">Ví credits — gói nạp, lịch sử, ưu đãi người dùng mới</div></div>
+    <div class="phone"><div class="screen real">
+      <img src="images/vi-credits.jpg" alt="Ảnh chụp thật màn hình Ví credits của ứng dụng TarotLight: số dư 240 credits, nút Top Up, gói nạp và lịch sử giao dịch">
+    </div><div class="cap">Ví credits — ảnh chụp thật: số dư, gói nạp, lịch sử giao dịch</div></div>
 
     <div class="phone"><div class="screen">
       <h3>Tarot Diario</h3>
